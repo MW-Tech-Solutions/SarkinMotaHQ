@@ -1,0 +1,745 @@
+[
+  {
+    "file": "about.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "activate-account.php",
+    "guards": [],
+    "actions": [
+      "submit_activation"
+    ],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "admin/manage-branding.php",
+    "guards": [
+      "require_super_admin()"
+    ],
+    "actions": [
+      "reset_branding",
+      "save_branding",
+      "allow_theme_switching"
+    ],
+    "forms": 2,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "admin/manage-careers.php",
+    "guards": [
+      "require_role(['admin', 'staff'])",
+      "require_permission('careers.manage')"
+    ],
+    "actions": [
+      "add_vacancy",
+      "delete_vacancy"
+    ],
+    "forms": 2,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "admin/manage-consultations.php",
+    "guards": [
+      "require_permission('consultations.manage')"
+    ],
+    "actions": [
+      "update_consultation_status"
+    ],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "admin/manage-divisions.php",
+    "guards": [
+      "require_super_admin()"
+    ],
+    "actions": [
+      "active"
+    ],
+    "forms": 2,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "admin/manage-inspections.php",
+    "guards": [
+      "require_permission('inspections.manage')"
+    ],
+    "actions": [
+      "update_inspection_status"
+    ],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "admin/manage-news.php",
+    "guards": [
+      "require_role(['admin', 'staff'])",
+      "require_permission('news.manage')"
+    ],
+    "actions": [
+      "add_article",
+      "update_article",
+      "delete_article"
+    ],
+    "forms": 3,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "admin/manage-projects.php",
+    "guards": [
+      "require_role(['admin', 'staff'])",
+      "require_permission('projects.manage')"
+    ],
+    "actions": [
+      "add_project",
+      "update_project",
+      "delete_project"
+    ],
+    "forms": 3,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "admin/manage-properties.php",
+    "guards": [
+      "require_role(['admin', 'staff'])",
+      "require_permission('properties.view')",
+      "require_permission('properties.create')",
+      "require_permission('properties.delete')"
+    ],
+    "actions": [
+      "add_property",
+      "update_property",
+      "delete_property"
+    ],
+    "forms": 3,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "admin/manage-team.php",
+    "guards": [
+      "require_login()"
+    ],
+    "actions": [
+      "is_active",
+      "is_active"
+    ],
+    "forms": 3,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "admin/send-mail.php",
+    "guards": [
+      "require_login()"
+    ],
+    "actions": [],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "admin/view-messages.php",
+    "guards": [
+      "require_role(['admin', 'staff'])"
+    ],
+    "actions": [
+      "toggle_status",
+      "delete_message"
+    ],
+    "forms": 2,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "api/payment-webhook.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "api/properties.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "api/theme-preference.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "auth/admin-dashboard.php",
+    "guards": [
+      "require_login()"
+    ],
+    "actions": [
+      "admin_add_user"
+    ],
+    "forms": 1,
+    "tabs": [
+      "quick",
+      "users",
+      "payments",
+      "audits"
+    ],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "auth/client-dashboard.php",
+    "guards": [
+      "require_login()"
+    ],
+    "actions": [],
+    "forms": 1,
+    "tabs": [
+      "overview",
+      "inspections",
+      "consultations"
+    ],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "auth/dashboard.php",
+    "guards": [
+      "require_login()"
+    ],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "auth/forgot-password.php",
+    "guards": [],
+    "actions": [],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "auth/landlord-dashboard.php",
+    "guards": [
+      "require_login()"
+    ],
+    "actions": [
+      "landlord_upload"
+    ],
+    "forms": 1,
+    "tabs": [
+      "overview",
+      "roster",
+      "upload"
+    ],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "auth/login.php",
+    "guards": [],
+    "actions": [],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "auth/logout.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "auth/register.php",
+    "guards": [],
+    "actions": [],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "auth/reset-password.php",
+    "guards": [],
+    "actions": [],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "auth/tenant-dashboard.php",
+    "guards": [
+      "require_login()"
+    ],
+    "actions": [
+      "pay_rent_submit",
+      "pay_electricity_submit",
+      "submit_maintenance"
+    ],
+    "forms": 4,
+    "tabs": [
+      "overview",
+      "pay_rent",
+      "pay_electricity",
+      "receipts",
+      "maintenance",
+      "helpdesk"
+    ],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "careers.php",
+    "guards": [],
+    "actions": [
+      "apply_job"
+    ],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "contact.php",
+    "guards": [],
+    "actions": [],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "divisions/agriculture.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "divisions/development.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "divisions/environmental.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "divisions/estate-management.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "divisions/view.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "download-receipt.php",
+    "guards": [
+      "require_login()"
+    ],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "download.php",
+    "guards": [
+      "require_login()"
+    ],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "error_pages/403.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "error_pages/404.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "error_pages/500.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "hr/applicants.php",
+    "guards": [
+      "require_login()",
+      "require_permission('hr.applicants.view')"
+    ],
+    "actions": [
+      "update_applicant"
+    ],
+    "forms": 2,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "hr/departments.php",
+    "guards": [
+      "require_login()"
+    ],
+    "actions": [],
+    "forms": 3,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "hr/directory.php",
+    "guards": [
+      "require_login()"
+    ],
+    "actions": [],
+    "forms": 5,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "hr/download-offer-pdf.php",
+    "guards": [
+      "require_login()"
+    ],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "hr/index.php",
+    "guards": [
+      "require_login()",
+      "require_permission('hr.view_dashboard')"
+    ],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "hr/interviews.php",
+    "guards": [
+      "require_login()",
+      "require_permission('hr.interviews.manage')"
+    ],
+    "actions": [
+      "schedule_interview",
+      "submit_evaluation"
+    ],
+    "forms": 2,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "hr/offers.php",
+    "guards": [
+      "require_login()",
+      "require_permission('hr.offers.create')"
+    ],
+    "actions": [
+      "create_offer",
+      "approve_offer"
+    ],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "hr/onboarding.php",
+    "guards": [
+      "require_login()",
+      "require_permission('hr.onboarding.manage')"
+    ],
+    "actions": [
+      "toggle_checklist",
+      "provision_staff_account"
+    ],
+    "forms": 2,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "hr/vacancies.php",
+    "guards": [
+      "require_login()",
+      "require_permission('hr.vacancies.manage')"
+    ],
+    "actions": [
+      "save_vacancy",
+      "update_status"
+    ],
+    "forms": 2,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "index.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "news-detail.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "news.php",
+    "guards": [],
+    "actions": [],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "offer-response.php",
+    "guards": [],
+    "actions": [
+      "submit_offer_response"
+    ],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "projects.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "properties.php",
+    "guards": [],
+    "actions": [],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "file": "property-detail.php",
+    "guards": [],
+    "actions": [
+      "book_inspection"
+    ],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "services.php",
+    "guards": [],
+    "actions": [
+      "request_consultation"
+    ],
+    "forms": 1,
+    "tabs": [],
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "file": "sitemap.php",
+    "guards": [],
+    "actions": [],
+    "forms": 0,
+    "tabs": [],
+    "methods": [
+      "GET"
+    ]
+  }
+]

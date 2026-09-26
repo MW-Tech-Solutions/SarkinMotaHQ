@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+node_modules/
+storage/**
+!storage/.htaccess
+uploads/*
+!uploads/.htaccess
+database/*dump.sql
+test-results/
+playwright-report/
+*.log
+.quality-credentials.json

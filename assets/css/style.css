@@ -1,0 +1,191 @@
+/* Custom Stylesheet for Sarkin Mota HQ */
+/* Sarkin Mota HQ Enterprise Compiled Stylesheet */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&family=Poppins:wght@500;600;700&display=swap');
+
+:root {
+  --font-headings: 'Montserrat', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+  --font-ui: 'Poppins', sans-serif;
+  --primary-gold: #f59e0b;
+  --primary-gold-dark: #d97706;
+  --slate-dark: #0f172a;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, .font-montserrat {
+  font-family: var(--font-headings) !important;
+}
+
+button, a, input, select, textarea, .font-poppins {
+  font-family: var(--font-ui) !important;
+}
+
+/* Strict Image & Media Bounds */
+img, video, iframe, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Accessibility Focus Ring Styles (WCAG 2.2 AA Compliance) */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #f59e0b !important;
+  outline-offset: 2px !important;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #f59e0b;
+  color: #0f172a;
+  padding: 8px 16px;
+  font-weight: bold;
+  z-index: 100;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Glassmorphism Classes */
+.glass-header {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Luxury gold gradients and accents */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #d4af37 0%, #f3e5ab 50%, #aa7c11 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gradient-gold {
+  background: linear-gradient(135deg, #b8860b 0%, #d4af37 50%, #aa7c11 100%);
+}
+
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #059669 0%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom Card Hover Effects */
+.luxury-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+  max-width: 100%;
+}
+
+.luxury-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Centered Mobile Card Layout Utilities */
+.card-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Table Mobile Responsiveness Wrapper */
+.responsive-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem;
+}
+
+.responsive-table-wrapper table {
+  width: 100%;
+  min-width: 600px;
+}
+
+/* Mobile Spacing & Layout Guards */
+@media (max-width: 640px) {
+  .responsive-table-wrapper table {
+    min-width: 500px;
+  }
+
+  /* Form action buttons full width on small mobile */
+  .mobile-full-width {
+    width: 100% !important;
+  }
+}
+
+/* Mobile Footer Accordion Transition */
+.footer-accordion-content {
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

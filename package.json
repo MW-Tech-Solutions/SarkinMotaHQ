@@ -1,0 +1,25 @@
+{
+  "name": "sarkinmotahq",
+  "version": "2.0.0",
+  "description": "Sarkin Mota HQ Enterprise Platform",
+  "main": "index.php",
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/css/style.css -o ./assets/css/app.css --minify",
+    "test": "php tests/run_tests.php"
+  },
+  "keywords": [
+    "realestate",
+    "consulting",
+    "sarkinmotahq"
+  ],
+  "author": "Sarkin Mota HQ",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
+    "autoprefixer": "^10.4.16",
+    "bootstrap-icons": "^1.11.3",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0"
+  }
+}

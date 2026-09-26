@@ -1,0 +1,29 @@
+/* Shared icon alignment; colors and size inherit from each themed component. */
+.bi {
+    flex-shrink: 0;
+}
+.bi::before {
+    vertical-align: -0.125em;
+}
+.ui-icon {
+    margin-inline-end: 0.375em;
+}
+.theme-switcher-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    white-space: nowrap;
+    min-height: 2rem;
+    border: 1px solid transparent;
+}
+.theme-switcher-btn[aria-pressed="true"] {
+    background: #f59e0b !important;
+    color: #0f172a !important;
+    border-color: currentColor;
+    font-weight: 700;
+}
+.theme-switcher-btn:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}

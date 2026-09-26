@@ -1,0 +1,45 @@
+name: Sarkin Mota HQ Enterprise CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    name: PHP Syntax, Lint & Automated Tests
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: sarkinmotahq_db
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+    - name: Checkout Source Code
+      uses: actions/checkout@v3
+
+    - name: Setup PHP Environment
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: mbstring, pdo, pdo_mysql, gd, fileinfo
+
+    - name: Verify PHP Syntax Across Codebase
+      run: |
+        find . -name "*.php" -not -path "./vendor/*" -exec php -l {} \;
+
+    - name: Run Database Migrations
+      run: |
+        php database/migrate.php
+
+    - name: Run Master Automated Test Suite
+      run: |
+        php tests/run_tests.php
+

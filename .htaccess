@@ -1,0 +1,23 @@
+# =========================================================================
+# Sarkin Mota HQ — Enterprise Security & Apache Hardening
+# =========================================================================
+
+# Disable Directory Browsing
+Options -Indexes
+
+# Protect Sensitive System Files (.env, .git, .sql, .log, scratch, storage)
+<FilesMatch "^\.(env|git|env\..*)|.*\.(sql|db|dump|log|md|yml|yaml|json)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Block Direct HTTP Access to Database, Storage, and Scratch Directories
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(\.env|database/|storage/|scratch/|tests/) - [F,L]
+</IfModule>
