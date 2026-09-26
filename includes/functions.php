@@ -118,6 +118,22 @@ function app_url($path = '') {
 // Safe Redirect Helper
 function redirect($url) {
     if (strpos($url, 'http://') !== 0 && strpos($url, 'https://') !== 0) {
+        if (strpos($url, '/') !== 0) {
+            $root_dir = realpath(__DIR__ . '/..');
+            $script_file = $_SERVER['SCRIPT_FILENAME'] ?? '';
+            if (!empty($script_file)) {
+                $script_dir = realpath(dirname($script_file));
+                if ($root_dir && $script_dir && strpos($script_dir, $root_dir) === 0) {
+                    $r = trim(substr($script_dir, strlen($root_dir)), '/\\');
+                    if ($r !== '') {
+                        $rel_dir = str_replace('\\', '/', $r) . '/';
+                        if (strpos($url, $rel_dir) !== 0) {
+                            $url = $rel_dir . $url;
+                        }
+                    }
+                }
+            }
+        }
         $url = app_url($url);
     }
     if (!headers_sent()) {

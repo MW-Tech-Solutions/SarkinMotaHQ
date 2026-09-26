@@ -21,19 +21,19 @@ switch ($role) {
     case 'hr_officer':
     case 'department_manager':
     case 'interviewer':
-        redirect('admin-dashboard.php' . $query_string);
+        redirect('auth/admin-dashboard.php' . $query_string);
         break;
 
     case 'tenant':
-        redirect('tenant-dashboard.php' . $query_string);
+        redirect('auth/tenant-dashboard.php' . $query_string);
         break;
 
     case 'landlord':
-        redirect('landlord-dashboard.php' . $query_string);
+        redirect('auth/landlord-dashboard.php' . $query_string);
         break;
 
     case 'client':
     default:
-        redirect('client-dashboard.php' . $query_string);
+        redirect('auth/client-dashboard.php' . $query_string);
         break;
 }
