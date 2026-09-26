@@ -28,4 +28,4 @@ revoke_current_session();
 
 start_secure_session();
 set_flash_message('success', 'You have been successfully signed out.');
-redirect('/SarkinMota/auth/login.php');
+redirect('auth/login.php');

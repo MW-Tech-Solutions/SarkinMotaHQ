@@ -8,7 +8,7 @@ require_once __DIR__ . '/../includes/auth_helper.php';
 
 $errors = [];
 if (is_logged_in()) {
-    redirect('/SarkinMota/auth/dashboard.php');
+    redirect('auth/dashboard.php');
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $log_stmt = $pdo->prepare("INSERT INTO audit_logs (username, action, ip_address) VALUES (?, ?, ?)");
                     $log_stmt->execute([$user['email'], "User Authenticated Successfully", $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1']);
 
-                    redirect('/SarkinMota/auth/dashboard.php');
+                    redirect('auth/dashboard.php');
                 } else {
                     $errors[] = "Invalid login credentials. Please check your email and password.";
                     // Audit log failed login attempt

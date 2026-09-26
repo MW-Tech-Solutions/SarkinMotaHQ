@@ -163,7 +163,7 @@ if (!$is_portal_view):
         </a>
 
         <!-- Desktop Navigation Links -->
-        <nav class="hidden lg:flex items-center space-x-3 xl:space-x-6 text-[11px] xl:text-xs font-bold uppercase tracking-wider shrink-0">
+        <nav class="hidden xl:flex items-center space-x-2 2xl:space-x-4 text-[10px] 2xl:text-xs font-bold uppercase tracking-wider shrink-0">
             <a href="<?php echo $path_depth; ?>index.php" class="whitespace-nowrap hover:text-amber-500 transition-colors <?php echo is_active_page('index.php'); ?>">Home</a>
             <a href="<?php echo $path_depth; ?>about.php" class="whitespace-nowrap hover:text-amber-500 transition-colors <?php echo is_active_page('about.php'); ?>">About Us</a>
             
@@ -248,23 +248,23 @@ if (!$is_portal_view):
                 </div>
             </div>
 
-            <!-- Desktop Browse CTA (Visible on XL screens 1280px+) -->
-            <a href="<?php echo $path_depth; ?>properties.php" class="hidden xl:inline-block bg-amber-500 text-slate-950 font-bold text-xs px-4 py-2.5 rounded-xl uppercase tracking-wider hover:bg-amber-600 transition-colors shadow shrink-0 whitespace-nowrap">
+            <!-- Desktop Browse CTA (Visible on 2XL screens 1536px+) -->
+            <a href="<?php echo $path_depth; ?>properties.php" class="hidden 2xl:inline-block bg-amber-500 text-slate-950 font-bold text-xs px-4 py-2.5 rounded-xl uppercase tracking-wider hover:bg-amber-600 transition-colors shadow shrink-0 whitespace-nowrap">
                 Browse Properties
             </a>
 
-            <!-- Mobile Drawer Menu Toggle Button -->
-            <button type="button" onclick="toggleMobileNav(true)" aria-label="Open Navigation Drawer" class="lg:hidden p-2 text-slate-700 dark:text-slate-200 hover:text-amber-500 focus:outline-none shrink-0">
+            <!-- Mobile & Tablet Drawer Menu Toggle Button -->
+            <button type="button" onclick="toggleMobileNav(true)" aria-label="Open Navigation Drawer" class="xl:hidden p-2 text-slate-700 dark:text-slate-200 hover:text-amber-500 focus:outline-none shrink-0">
                 <i aria-hidden="true" class="bi bi-list text-2xl"></i>
             </button>
         </div>
     </div>
 
     <!-- Mobile Off-Canvas Drawer Backdrop -->
-    <div id="mobile-nav-backdrop" onclick="toggleMobileNav(false)" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden transition-opacity duration-300 lg:hidden"></div>
+    <div id="mobile-nav-backdrop" onclick="toggleMobileNav(false)" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden transition-opacity duration-300 xl:hidden"></div>
 
     <!-- Off-Canvas Slide-Out Mobile Navigation Drawer -->
-    <div id="mobile-nav" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 z-50 overflow-y-auto p-5 sm:p-6 flex flex-col justify-between shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden">
+    <div id="mobile-nav" class="fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 z-50 overflow-y-auto p-5 sm:p-6 flex flex-col justify-between shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out xl:hidden">
         <div>
             <!-- Mobile Drawer Header -->
             <div class="pb-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between mb-6">

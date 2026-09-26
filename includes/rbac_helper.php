@@ -48,7 +48,7 @@ function has_permission($permission_name) {
 /**
  * Enforce specific permission; redirect if user lacks permission
  */
-function require_permission($permission_name, $redirect_to = '/SarkinMota/auth/dashboard.php') {
+function require_permission($permission_name, $redirect_to = 'auth/dashboard.php') {
     require_login();
     if (!has_permission($permission_name)) {
         set_flash_message('danger', 'Access Denied: You do not possess the required permission (' . htmlspecialchars($permission_name) . ').');

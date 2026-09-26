@@ -75,8 +75,51 @@ function limit_words($text, $limit = 20) {
     return $text;
 }
 
+/**
+ * Dynamic App Base URL Resolver
+ */
+function get_app_base_url() {
+    static $base_url = null;
+    if ($base_url !== null) return $base_url;
+
+    $root_dir = realpath(__DIR__ . '/..');
+    $doc_root = isset($_SERVER['DOCUMENT_ROOT']) ? realpath($_SERVER['DOCUMENT_ROOT']) : false;
+
+    if ($root_dir && $doc_root && strpos($root_dir, $doc_root) === 0) {
+        $rel = str_replace('\\', '/', substr($root_dir, strlen($doc_root)));
+        $base_url = '/' . ltrim(rtrim($rel, '/'), '/') . '/';
+        $base_url = preg_replace('#/+#', '/', $base_url);
+        return $base_url;
+    }
+
+    $script = $_SERVER['SCRIPT_NAME'] ?? ($_SERVER['PHP_SELF'] ?? '');
+    foreach (['/auth/', '/admin/', '/hr/', '/sales/', '/staff/', '/divisions/'] as $marker) {
+        $pos = strpos($script, $marker);
+        if ($pos !== false) {
+            $base_url = '/' . ltrim(substr($script, 0, $pos), '/') . '/';
+            $base_url = preg_replace('#/+#', '/', $base_url);
+            return $base_url;
+        }
+    }
+
+    $base_url = '/';
+    return $base_url;
+}
+
+/**
+ * Generate fully resolved application URL
+ */
+function app_url($path = '') {
+    $base = get_app_base_url();
+    $clean_path = preg_replace('#^/+(SarkinMota/)?#i', '', $path);
+    return $base . $clean_path;
+}
+
 // Safe Redirect Helper
 function redirect($url) {
+    if (strpos($url, 'http://') !== 0 && strpos($url, 'https://') !== 0) {
+        $url = app_url($url);
+    }
     if (!headers_sent()) {
         header("Location: " . $url);
         exit;

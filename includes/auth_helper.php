@@ -120,7 +120,7 @@ function revoke_current_session() {
 /**
  * Enforce login; redirect to login if unauthenticated
  */
-function require_login($redirect_to = '/SarkinMota/auth/login.php') {
+function require_login($redirect_to = 'auth/login.php') {
     if (!is_logged_in()) {
         set_flash_message('warning', 'Session expired or invalid. Please sign in to continue.');
         redirect($redirect_to);
@@ -130,7 +130,7 @@ function require_login($redirect_to = '/SarkinMota/auth/login.php') {
 /**
  * Enforce role access (Super Admin bypasses all role restrictions)
  */
-function require_role($allowed_roles, $redirect_to = '/SarkinMota/auth/dashboard.php') {
+function require_role($allowed_roles, $redirect_to = 'auth/dashboard.php') {
     require_login();
     $user = get_logged_in_user();
     
@@ -150,23 +150,23 @@ function require_role($allowed_roles, $redirect_to = '/SarkinMota/auth/dashboard
 /**
  * Role specific enforcement shortcuts
  */
-function require_super_admin($redirect_to = '/SarkinMota/auth/dashboard.php') {
+function require_super_admin($redirect_to = 'auth/dashboard.php') {
     require_role('super_admin', $redirect_to);
 }
 
-function require_admin($redirect_to = '/SarkinMota/auth/dashboard.php') {
+function require_admin($redirect_to = 'auth/dashboard.php') {
     require_role(['super_admin', 'admin'], $redirect_to);
 }
 
-function require_landlord($redirect_to = '/SarkinMota/auth/dashboard.php') {
+function require_landlord($redirect_to = 'auth/dashboard.php') {
     require_role(['super_admin', 'admin', 'landlord'], $redirect_to);
 }
 
-function require_tenant($redirect_to = '/SarkinMota/auth/dashboard.php') {
+function require_tenant($redirect_to = 'auth/dashboard.php') {
     require_role(['super_admin', 'admin', 'tenant'], $redirect_to);
 }
 
-function require_staff($redirect_to = '/SarkinMota/auth/dashboard.php') {
+function require_staff($redirect_to = 'auth/dashboard.php') {
     require_role(['super_admin', 'admin', 'staff', 'general_staff', 'sales_executive', 'sales_manager', 'hr_manager', 'hr_officer', 'department_manager', 'interviewer'], $redirect_to);
 }
 

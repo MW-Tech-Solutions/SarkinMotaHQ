@@ -8,7 +8,7 @@ require_once __DIR__ . '/../includes/auth_helper.php';
 
 $errors = [];
 if (is_logged_in()) {
-    redirect('/SarkinMota/auth/dashboard.php');
+    redirect('auth/dashboard.php');
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $pdo->commit();
                     
                     set_flash_message('success', "Account created successfully as " . ucfirst($role) . ". You can now sign in.");
-                    redirect('/SarkinMota/auth/login.php');
+                    redirect('auth/login.php');
                 }
             } catch (Exception $e) {
                 if ($pdo->inTransaction()) $pdo->rollBack();
