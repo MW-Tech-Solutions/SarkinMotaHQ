@@ -14,7 +14,7 @@ $user = get_logged_in_user();
 
 if (!has_permission('review_task_report') && !has_permission('approve_task_report')) {
     set_flash_message('danger', 'Access Denied: You do not have permission to review task reports.');
-    redirect('/SarkinMota/auth/dashboard.php');
+    redirect('auth/dashboard.php');
 }
 
 $task_id = intval($_GET['id'] ?? 0);
@@ -173,7 +173,7 @@ require_once __DIR__ . '/../includes/header.php';
     <main class="flex-1 p-6 sm:p-10 max-w-7xl mx-auto">
         <!-- Breadcrumb & Header -->
         <div class="mb-8">
-            <a href="/SarkinMota/admin/manage-tasks.php" class="text-xs text-amber-500 font-bold uppercase tracking-wider flex items-center gap-1.5 mb-2 hover:underline">
+            <a href="<?php echo $portal_depth; ?>admin/manage-tasks.php" class="text-xs text-amber-500 font-bold uppercase tracking-wider flex items-center gap-1.5 mb-2 hover:underline">
                 <i class="bi bi-arrow-left"></i> Back to Task Control Center
             </a>
             <?php if ($task): ?>
@@ -256,7 +256,7 @@ require_once __DIR__ . '/../includes/header.php';
                                                 <span class="text-[11px] text-slate-400 italic">No files attached to this submission.</span>
                                             <?php else: ?>
                                                 <?php foreach ($sub_files as $f): ?>
-                                                    <a href="/SarkinMota/download.php?type=task_attachment&id=<?php echo $f['id']; ?>" class="px-3 py-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold text-amber-500 hover:bg-amber-500 hover:text-slate-950 transition-all flex items-center space-x-1.5">
+                                                    <a href="<?php echo $portal_depth; ?>download.php?type=task_attachment&id=<?php echo $f['id']; ?>" class="px-3 py-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold text-amber-500 hover:bg-amber-500 hover:text-slate-950 transition-all flex items-center space-x-1.5">
                                                         <i class="bi bi-paperclip"></i>
                                                         <span><?php echo htmlspecialchars($f['original_name']); ?></span>
                                                     </a>

@@ -178,7 +178,7 @@ require_once __DIR__ . '/../includes/header.php';
                             <button onclick='editDivision(<?php echo json_encode($div); ?>)' class="flex-1 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-amber-500 hover:text-slate-950 font-bold rounded-lg text-xs transition-all text-center">
                                 Edit
                             </button>
-                            <a href="/SarkinMota/admin/manage-projects.php?division_id=<?php echo $div['id']; ?>" class="flex-1 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold rounded-lg text-xs transition-all text-center">
+                            <a href="<?php echo $portal_depth; ?>admin/manage-projects.php?division_id=<?php echo $div['id']; ?>" class="flex-1 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold rounded-lg text-xs transition-all text-center">
                                 Projects
                             </a>
                             <form method="POST" action="manage-divisions.php" onsubmit="return confirm('Are you sure you want to delete the division <?php echo htmlspecialchars(addslashes($div['name'])); ?>?');" class="inline">

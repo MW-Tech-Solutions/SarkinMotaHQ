@@ -15,7 +15,7 @@ $user = get_logged_in_user();
 // RBAC: Require permission to view or manage projects
 if (!has_permission('manage_all_projects') && !has_permission('view_division_projects')) {
     set_flash_message('danger', 'Access Denied: You do not have permission to view corporate projects.');
-    redirect('/SarkinMota/auth/dashboard.php');
+    redirect('auth/dashboard.php');
 }
 
 $errors = [];

@@ -47,7 +47,7 @@ function notify_task_assignment(array $task, array $staff_user): void {
     $task_ref = $task['task_reference'];
     $due_date = $task['due_date'] ? date('M d, Y', strtotime($task['due_date'])) : 'N/A';
     $priority = $task['priority'] ?? 'Normal';
-    $task_link = "/SarkinMota/hr/task-view.php?id=" . $task['id'];
+    $task_link = "hr/task-view.php?id=" . $task['id'];
 
     // In-App Notification
     create_notification(
@@ -81,7 +81,7 @@ function notify_task_assignment(array $task, array $staff_user): void {
                 " . nl2br(htmlspecialchars($task['instructions'] ?? $task['description'] ?? 'Please log in to review instructions.')) . "
             </div>
             <div style='margin-top: 24px; text-align: center;'>
-                <a href='http://localhost/SarkinMota/hr/task-view.php?id={$task['id']}' style='background-color: #f59e0b; color: #0f172a; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-size: 13px;'>Acknowledge & View Task</a>
+                <a href='" . app_url("hr/task-view.php?id={$task['id']}") . "' style='background-color: #f59e0b; color: #0f172a; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-size: 13px;'>Acknowledge & View Task</a>
             </div>
         </div>
         <div style='background-color: #f8fafc; padding: 12px; text-align: center; font-size: 11px; color: #64748b; border-radius: 0 0 8px 8px;'>
@@ -111,7 +111,7 @@ function notify_task_submission(array $task, array $staff_user, array $submissio
             (int)$admin['id'],
             "Task Submitted: {$task_ref}",
             "Staff member " . $staff_user['name'] . " submitted work report for task '{$task_title}'.",
-            "/SarkinMota/admin/review-tasks.php?id=" . $task['id'],
+            "admin/review-tasks.php?id=" . $task['id'],
             'task_submitted'
         );
 
@@ -132,7 +132,7 @@ function notify_task_submission(array $task, array $staff_user, array $submissio
                     <p><strong>Submission Summary:</strong> " . htmlspecialchars($submission['summary']) . "</p>
                 </div>
                 <div style='margin-top: 24px; text-align: center;'>
-                    <a href='http://localhost/SarkinMota/admin/review-tasks.php?id={$task['id']}' style='background-color: #0f172a; color: #ffffff; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-size: 13px;'>Review Work Submission</a>
+                    <a href='" . app_url("admin/review-tasks.php?id={$task['id']}") . "' style='background-color: #0f172a; color: #ffffff; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-size: 13px;'>Review Work Submission</a>
                 </div>
             </div>
         </div>";
@@ -156,7 +156,7 @@ function notify_task_review_decision(array $task, array $staff_user, string $dec
         ? "Your work report for '{$task_title}' was reviewed and ACCEPTED." 
         : "Your submission for '{$task_title}' was REJECTED. Reason: {$reason}";
 
-    create_notification($user_id, $title, $msg, "/SarkinMota/hr/task-view.php?id=" . $task['id'], $type);
+    create_notification($user_id, $title, $msg, "hr/task-view.php?id=" . $task['id'], $type);
 
     $subject = $is_accepted ? "Task Accepted: [{$task_ref}] {$task_title}" : "Task Requires Revision: [{$task_ref}] {$task_title}";
     $badge_color = $is_accepted ? "#10b981" : "#ef4444";
@@ -177,7 +177,7 @@ function notify_task_review_decision(array $task, array $staff_user, string $dec
                 <p style='margin: 0;'><strong>Review Comments & Reason:</strong><br>" . nl2br(htmlspecialchars($reason)) . "</p>
             </div>
             <div style='margin-top: 24px; text-align: center;'>
-                <a href='http://localhost/SarkinMota/hr/task-view.php?id={$task['id']}' style='background-color: #f59e0b; color: #0f172a; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-size: 13px;'>View Task Details</a>
+                <a href='" . app_url("hr/task-view.php?id={$task['id']}") . "' style='background-color: #f59e0b; color: #0f172a; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 6px; display: inline-block; font-size: 13px;'>View Task Details</a>
             </div>
         </div>
     </div>";

@@ -14,7 +14,7 @@ $user = get_logged_in_user();
 
 if (!has_permission('assign_tasks') && !has_permission('view_all_tasks')) {
     set_flash_message('danger', 'Access Denied: You do not have permission to access task management.');
-    redirect('/SarkinMota/auth/dashboard.php');
+    redirect('auth/dashboard.php');
 }
 
 $errors = [];
@@ -225,7 +225,7 @@ require_once __DIR__ . '/../includes/header.php';
                                         </span>
                                     </td>
                                     <td class="p-4 text-right">
-                                        <a href="/SarkinMota/admin/review-tasks.php?id=<?php echo $t['id']; ?>" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-amber-500 hover:text-slate-950 font-bold rounded-lg text-[11px] transition-all inline-block">
+                                        <a href="<?php echo $portal_depth; ?>admin/review-tasks.php?id=<?php echo $t['id']; ?>" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-amber-500 hover:text-slate-950 font-bold rounded-lg text-[11px] transition-all inline-block">
                                             Review / Details
                                         </a>
                                     </td>

@@ -18,7 +18,7 @@ $can_manage_depts = is_super_admin() || is_admin() || $user_role === 'hr_manager
 
 if (!$can_manage_depts) {
     set_flash_message('danger', 'Access Denied: You do not have permission to manage corporate departments.');
-    redirect('/SarkinMota/auth/dashboard.php');
+    redirect('auth/dashboard.php');
 }
 
 // Helper for HR Audit Logging
@@ -37,7 +37,7 @@ if (!function_exists('logHRAudit')) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!verify_csrf_token($_POST['csrf_token'] ?? '')) {
         set_flash_message('danger', 'CSRF validation failed. Please try again.');
-        redirect('/SarkinMota/hr/departments.php');
+        redirect('hr/departments.php');
     }
 
     $action = $_POST['action'] ?? '';
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (empty($name)) {
             set_flash_message('danger', 'Department name is required.');
-            redirect('/SarkinMota/hr/departments.php');
+            redirect('hr/departments.php');
         }
 
         if (empty($code)) {
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt_check->execute([$name, $code]);
         if ($stmt_check->fetch()) {
             set_flash_message('danger', "A department with the name '$name' or code '$code' already exists.");
-            redirect('/SarkinMota/hr/departments.php');
+            redirect('hr/departments.php');
         }
 
         try {
@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             error_log("Create Department Error: " . $e->getMessage());
             set_flash_message('danger', "Failed to create department: " . $e->getMessage());
         }
-        redirect('/SarkinMota/hr/departments.php');
+        redirect('hr/departments.php');
     }
 
     // EDIT DEPARTMENT
@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($dept_id <= 0 || empty($name) || empty($code)) {
             set_flash_message('danger', 'Invalid department details provided.');
-            redirect('/SarkinMota/hr/departments.php');
+            redirect('hr/departments.php');
         }
 
         // Check duplicate name or code for other records
@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt_check->execute([$name, $code, $dept_id]);
         if ($stmt_check->fetch()) {
             set_flash_message('danger', "Another department already uses the name '$name' or code '$code'.");
-            redirect('/SarkinMota/hr/departments.php');
+            redirect('hr/departments.php');
         }
 
         try {
@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             error_log("Update Department Error: " . $e->getMessage());
             set_flash_message('danger', "Failed to update department: " . $e->getMessage());
         }
-        redirect('/SarkinMota/hr/departments.php');
+        redirect('hr/departments.php');
     }
 
     // DELETE DEPARTMENT
@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if ($dept_id <= 0) {
             set_flash_message('danger', 'Invalid department selection.');
-            redirect('/SarkinMota/hr/departments.php');
+            redirect('hr/departments.php');
         }
 
         // Check if department exists
@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (!$dept_data) {
             set_flash_message('danger', 'Department not found.');
-            redirect('/SarkinMota/hr/departments.php');
+            redirect('hr/departments.php');
         }
 
         // Check linked employees
@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($emp_count > 0 || $vac_count > 0) {
             set_flash_message('danger', "Cannot delete department '{$dept_data['name']}': $emp_count active employee(s) and $vac_count job vacancy/vacancies are assigned to it. Please reassign them first.");
-            redirect('/SarkinMota/hr/departments.php');
+            redirect('hr/departments.php');
         }
 
         try {
@@ -159,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             error_log("Delete Department Error: " . $e->getMessage());
             set_flash_message('danger', "Failed to delete department: " . $e->getMessage());
         }
-        redirect('/SarkinMota/hr/departments.php');
+        redirect('hr/departments.php');
     }
 }
 
@@ -410,7 +410,7 @@ require_once __DIR__ . '/../includes/admin_sidebar.php';
             </button>
         </div>
 
-        <form action="/SarkinMota/hr/departments.php" method="POST" class="space-y-4">
+        <form action="departments.php" method="POST" class="space-y-4">
             <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">
             <input type="hidden" name="action" value="create_department">
 
@@ -468,7 +468,7 @@ require_once __DIR__ . '/../includes/admin_sidebar.php';
             </button>
         </div>
 
-        <form action="/SarkinMota/hr/departments.php" method="POST" class="space-y-4">
+        <form action="departments.php" method="POST" class="space-y-4">
             <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">
             <input type="hidden" name="action" value="edit_department">
             <input type="hidden" id="edit_dept_id" name="department_id">
@@ -527,7 +527,7 @@ require_once __DIR__ . '/../includes/admin_sidebar.php';
             </p>
         </div>
 
-        <form action="/SarkinMota/hr/departments.php" method="POST" class="space-y-4">
+        <form action="departments.php" method="POST" class="space-y-4">
             <input type="hidden" name="csrf_token" value="<?php echo generate_csrf_token(); ?>">
             <input type="hidden" name="action" value="delete_department">
             <input type="hidden" id="delete_dept_id" name="department_id">

@@ -180,7 +180,7 @@ try {
         $is_super_admin = in_array($user['role'] ?? '', ['super_admin', 'admin']);
         if (!$is_super_admin && !$assignee_info) {
             set_flash_message('danger', 'Access Denied: You are not assigned to this task.');
-            redirect('/SarkinMota/hr/my-tasks.php');
+            redirect('hr/my-tasks.php');
         }
 
         // Submissions

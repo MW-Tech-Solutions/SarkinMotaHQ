@@ -29,7 +29,7 @@ try {
 
     if (!$tx) {
         set_flash_message('danger', 'Transaction record not found.');
-        redirect('/SarkinMota/auth/dashboard.php');
+        redirect('auth/dashboard.php');
     }
 
     // Object-Level Authorization: Only transaction owner or Admin/Staff operations can access receipt
@@ -38,13 +38,13 @@ try {
 
     if (!$is_owner && !$is_admin_staff) {
         set_flash_message('danger', 'Access Denied: You are not authorized to view or download this payment receipt.');
-        redirect('/SarkinMota/auth/dashboard.php');
+        redirect('auth/dashboard.php');
     }
 
     // Receipt available ONLY for genuinely paid transactions
     if ($tx['status'] !== 'paid') {
         set_flash_message('warning', 'Receipts are only generated for verified paid transactions. Current status: ' . strtoupper($tx['status']));
-        redirect('/SarkinMota/auth/dashboard.php');
+        redirect('auth/dashboard.php');
     }
 
 } catch (Exception $e) {

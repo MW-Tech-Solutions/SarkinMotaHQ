@@ -27,7 +27,7 @@ try {
         // Must possess applications.view permission to download candidate resumes
         if (!has_permission('applications.view')) {
             set_flash_message('danger', 'Access Denied: You do not have permission to access private job application resumes.');
-            redirect('/SarkinMota/auth/dashboard.php');
+            redirect('auth/dashboard.php');
         }
 
         $stmt = $pdo->prepare("SELECT resume_path, name FROM applications WHERE id = ?");
@@ -74,7 +74,7 @@ try {
 
         if (!$is_admin && !$is_uploader && !$is_assignee) {
             set_flash_message('danger', 'Access Denied: You are not authorized to access this private task evidence file.');
-            redirect('/SarkinMota/auth/dashboard.php');
+            redirect('auth/dashboard.php');
         }
 
         $filepath = $attachment['path'];

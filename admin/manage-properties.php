@@ -415,9 +415,9 @@ function openEditPropertyModal(prop) {
 }
 
 function resolveImageUrl(url) {
-    if (!url) return '/SarkinMota/assets/images/logo.png';
+    if (!url) return '<?php echo $portal_depth; ?>assets/images/logo.png';
     if (url.indexOf('http://') === 0 || url.indexOf('https://') === 0 || url.indexOf('data:') === 0) return url;
-    return '/SarkinMota/' + url.replace(/^\/+/, '');
+    return '<?php echo $portal_depth; ?>' + url.replace(/^\/+/, '');
 }
 
 function closeEditPropertyModal() {

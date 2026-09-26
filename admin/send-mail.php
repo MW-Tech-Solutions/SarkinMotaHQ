@@ -19,7 +19,7 @@ $can_send_mail = is_super_admin() || is_admin() || $user_role === 'hr_manager' |
 
 if (!$can_send_mail) {
     set_flash_message('danger', 'Access Denied: You do not have authorization to access the Email Dispatcher.');
-    redirect('/SarkinMota/auth/dashboard.php');
+    redirect('auth/dashboard.php');
 }
 
 $error = '';

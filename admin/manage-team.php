@@ -13,7 +13,7 @@ $user = get_logged_in_user();
 // Authorization Guard: Super Admin or Admin
 if (!is_super_admin() && !is_admin()) {
     set_flash_message('danger', 'Access Denied: Leadership team management is restricted to Administrators.');
-    redirect('/SarkinMota/auth/dashboard.php');
+    redirect('auth/dashboard.php');
 }
 
 $errors = [];
